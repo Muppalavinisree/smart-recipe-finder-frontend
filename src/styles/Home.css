@@ -294,5 +294,15 @@
   .quick-right .view-btn {
     width: 100%;
   }
+   .header, .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .favorites-btn {
+    margin-top: 10px;
+    position: static !important;
+  }
 }
+
 

@@ -87,3 +87,9 @@
   margin-top: 18px
 }
 
+@media(max-width:768px) {
+  .favorites-drawer {
+    width: 100%;
+    border-radius: 0
+  }
+}
