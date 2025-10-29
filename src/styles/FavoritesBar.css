@@ -87,16 +87,3 @@
   margin-top: 18px
 }
 
-@media (max-width: 768px) {
-  .favorites-btn {
-    position: static;
-    display: block;
-    margin: 10px auto 0; /* centers horizontally */
-    text-align: center;
-  }
-
-  .favorites-drawer {
-    width: 100%;
-    border-radius: 0;
-  }
-}
