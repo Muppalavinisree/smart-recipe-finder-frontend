@@ -294,9 +294,7 @@
   .quick-right .view-btn {
     width: 100%;
   }
-  .favorites-btn,
-  .favorites-bar,
-  .favorites-drawer {
+ .favorites-pill {
     position: static !important;
     margin-top: 20px;
     display: block;
@@ -304,7 +302,7 @@
     text-align: center;
   }
 
-  .header, .navbar, .home-container {
+  .header, .navbar, .home-container, .topbar {
     flex-direction: column;
     align-items: center;
   }
