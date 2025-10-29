@@ -41,7 +41,6 @@ const quickMealsData = [
   idMeal: "52982",
   strMeal: "Spaghetti alla Carbonara",
   strMealThumb: "https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg",
-  // Note: “time” is not provided in API — you can set like:
   time: "⏱️ ~10 mins"
 }
 

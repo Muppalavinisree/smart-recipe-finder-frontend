@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ for page navigation
+import { useNavigate } from "react-router-dom";
 import MealCard from "../components/MealCard";
 import FavoritesBar from "../components/FavoritesBar";
-import "../styles/home.css";
+import "../styles/Home.css";
 import Chatbot from "../components/chatbot";
 
 
@@ -15,7 +15,7 @@ const Home = ({ favorites, onToggleFavorite, onRemoveFavorite }) => {
   const [showFavDrawer, setShowFavDrawer] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Fetch categories dynamically (with real images)
+  //Fetch categories dynamically
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -29,101 +29,101 @@ const Home = ({ favorites, onToggleFavorite, onRemoveFavorite }) => {
     fetchCategories();
   }, []);
 
-  
-const enrichMeals = (raw = []) => {
-  const quickKeywords = [
-    "salad", "sandwich", "toast", "omelet", "omelette", "egg", "wrap",
-    "noodle", "pasta", "stir", "ramen", "burger", "roll", "burrito", "taco",
-    "shawarma", "fajita", "quesadilla", "pie", "bowl", "snack", "fool", "bars",
-    "beavertails", "breakfast potatoes", "fruit and cream cheese breakfast pastries",
-  ];
 
-  const nonVegKeywords = [
-    "chicken", "beef", "pork", "lamb", "fish", "shrimp", "prawn", "crab",
-    "tuna", "salmon", "seafood", "bacon", "turkey", "mutton", "steak",
-    "meat", "oxtail", "prosciutto", "anchovy", "jerk chicken", "kung pao chicken",
-    "general tsos", "kentucky fried chicken", "chicken handi", "lamb biryani",
-    "tunisian lamb soup", "montreal smoked meat"
-  ];
+  const enrichMeals = (raw = []) => {
+    const quickKeywords = [
+      "salad", "sandwich", "toast", "omelet", "omelette", "egg", "wrap",
+      "noodle", "pasta", "stir", "ramen", "burger", "roll", "burrito", "taco",
+      "shawarma", "fajita", "quesadilla", "pie", "bowl", "snack", "fool", "bars",
+      "beavertails", "breakfast potatoes", "fruit and cream cheese breakfast pastries",
+    ];
 
-  const breakfast = [
-    "english breakfast", "french omelette", "smoked haddock kedgeree",
-    "home-made mandazi", "salmon eggs eggs benedict",
-    "fruit and cream cheese breakfast pastries", "breakfast potatoes",
-    "budino di ricotta", "bread and butter pudding"
-  ];
+    const nonVegKeywords = [
+      "chicken", "beef", "pork", "lamb", "fish", "shrimp", "prawn", "crab",
+      "tuna", "salmon", "seafood", "bacon", "turkey", "mutton", "steak",
+      "meat", "oxtail", "prosciutto", "anchovy", "jerk chicken", "kung pao chicken",
+      "general tsos", "kentucky fried chicken", "chicken handi", "lamb biryani",
+      "tunisian lamb soup", "montreal smoked meat"
+    ];
 
-  const lunch = [
-    "biryani", "rice", "salad", "sandwich", "wrap",
-    "spaghetti alla carbonara", "spaghetti bolognese", "spicy arrabiata penne",
-    "shrimp chow fun", "tuna and egg briks", "chickpea fajitas", "vegetarian chilli",
-    "matar paneer", "salmon avocado salad", "three fish pie",
-    "roast fennel and aubergine paella", "escovitch fish", "recheado masala fish"
-  ];
+    const breakfast = [
+      "english breakfast", "french omelette", "smoked haddock kedgeree",
+      "home-made mandazi", "salmon eggs eggs benedict",
+      "fruit and cream cheese breakfast pastries", "breakfast potatoes",
+      "budino di ricotta", "bread and butter pudding"
+    ];
 
-  const dinner = [
-    "tandoori chicken", "lamb rogan josh", "chicken handi", "lamb biryani",
-    "nutty chicken curry", "fish stew", "curry", "roast", "stew",
-    "baingan bharta", "dal fry", "vegetarian casserole", "potato gratin"
-  ];
+    const lunch = [
+      "biryani", "rice", "salad", "sandwich", "wrap",
+      "spaghetti alla carbonara", "spaghetti bolognese", "spicy arrabiata penne",
+      "shrimp chow fun", "tuna and egg briks", "chickpea fajitas", "vegetarian chilli",
+      "matar paneer", "salmon avocado salad", "three fish pie",
+      "roast fennel and aubergine paella", "escovitch fish", "recheado masala fish"
+    ];
 
-  const snacks = [
-    "cookie", "bars", "pastry", "souffle", "pakora", "cutlet", "roll",
-    "fries", "chips", "dip", "nugget", "mandazi", "beavertails", "buns",
-    "snack", "toast", "sandwich"
-  ];
+    const dinner = [
+      "tandoori chicken", "lamb rogan josh", "chicken handi", "lamb biryani",
+      "nutty chicken curry", "fish stew", "curry", "roast", "stew",
+      "baingan bharta", "dal fry", "vegetarian casserole", "potato gratin"
+    ];
 
-  const desserts = [
-    "cake", "tart", "pudding", "crumble", "pie", "dessert", "sweet", "fudge",
-    "caramel", "cream", "mousse", "souffle", "brulee", "pavlova", "shortcake",
-    "brownie", "cookie", "butter tarts", "nanaimo bars", "treacle tart",
-    "blackberry fool", "fruit fool"
-  ];
+    const snacks = [
+      "cookie", "bars", "pastry", "souffle", "pakora", "cutlet", "roll",
+      "fries", "chips", "dip", "nugget", "mandazi", "beavertails", "buns",
+      "snack", "toast", "sandwich"
+    ];
 
-  let enriched = (raw || []).map((m) => {
-    const name = (m.strMeal || "").toLowerCase();
-    const category = (m.strCategory || "").toLowerCase();
+    const desserts = [
+      "cake", "tart", "pudding", "crumble", "pie", "dessert", "sweet", "fudge",
+      "caramel", "cream", "mousse", "souffle", "brulee", "pavlova", "shortcake",
+      "brownie", "cookie", "butter tarts", "nanaimo bars", "treacle tart",
+      "blackberry fool", "fruit fool"
+    ];
 
-    const isQuick = quickKeywords.some((kw) => name.includes(kw));
-    const readyInMinutes = isQuick ? 8 : Math.floor(Math.random() * 40) + 15;
-    const isNonVeg = nonVegKeywords.some((kw) => name.includes(kw));
+    let enriched = (raw || []).map((m) => {
+      const name = (m.strMeal || "").toLowerCase();
+      const category = (m.strCategory || "").toLowerCase();
 
-    let type = "other";
-    if (breakfast.some((kw) => name.includes(kw))) type = "breakfast";
-    else if (lunch.some((kw) => name.includes(kw))) type = "lunch";
-    else if (dinner.some((kw) => name.includes(kw))) type = "dinner";
-    else if (
-      desserts.some((kw) => name.includes(kw)) ||
-      category.includes("dessert")
-    ) type = "dessert";
-    else if (
-      snacks.some((kw) => name.includes(kw)) ||
-      category.includes("snack") ||
-      category.includes("appetizer") ||
-      category.includes("starter")
-    ) type = "snacks";
+      const isQuick = quickKeywords.some((kw) => name.includes(kw));
+      const readyInMinutes = isQuick ? 8 : Math.floor(Math.random() * 40) + 15;
+      const isNonVeg = nonVegKeywords.some((kw) => name.includes(kw));
 
-    return {
-      ...m,
-      readyInMinutes,
-      isQuick: readyInMinutes <= 10,
-      isNonVeg,
-      isVeg: !isNonVeg,
-      mealType: type,
-    };
-  });
+      let type = "other";
+      if (breakfast.some((kw) => name.includes(kw))) type = "breakfast";
+      else if (lunch.some((kw) => name.includes(kw))) type = "lunch";
+      else if (dinner.some((kw) => name.includes(kw))) type = "dinner";
+      else if (
+        desserts.some((kw) => name.includes(kw)) ||
+        category.includes("dessert")
+      ) type = "dessert";
+      else if (
+        snacks.some((kw) => name.includes(kw)) ||
+        category.includes("snack") ||
+        category.includes("appetizer") ||
+        category.includes("starter")
+      ) type = "snacks";
 
-  // Fallback for missing dessert
-  const dessertCount = enriched.filter((m) => m.mealType === "dessert").length;
-  if (dessertCount < 4 && enriched.length > 0) {
-    const sweetLike = enriched
-      .filter((m) => /(cake|tart|cookie|sweet|pudding|dessert)/i.test(m.strMeal))
-      .slice(0, 4);
-    sweetLike.forEach((d) => (d.mealType = "dessert"));
-  }
+      return {
+        ...m,
+        readyInMinutes,
+        isQuick: readyInMinutes <= 10,
+        isNonVeg,
+        isVeg: !isNonVeg,
+        mealType: type,
+      };
+    });
 
-  return enriched;
-};
+    // Fallback for missing dessert
+    const dessertCount = enriched.filter((m) => m.mealType === "dessert").length;
+    if (dessertCount < 4 && enriched.length > 0) {
+      const sweetLike = enriched
+        .filter((m) => /(cake|tart|cookie|sweet|pudding|dessert)/i.test(m.strMeal))
+        .slice(0, 4);
+      sweetLike.forEach((d) => (d.mealType = "dessert"));
+    }
+
+    return enriched;
+  };
 
 
 
@@ -172,7 +172,6 @@ const enrichMeals = (raw = []) => {
 
   return (
     <div className="app-shell">
-      {/* Header */}
       <header className="topbar">
         <div className="brand">
           <h1>Taylor's Kitchen Guide <span className="sp">🧑‍🍳</span></h1>
@@ -206,31 +205,31 @@ const enrichMeals = (raw = []) => {
           </div>
 
           {/* Quick Meals + Search */}
-          
-           {/* Quick Meals + Search (Separated layout) */}
-<div className="quick-and-search"> {/* ✅ wrapper for both sections */}
 
-  {/* --- Quick Meal Suggestion Card --- */}
-  <div className="quick-card" onClick={() => navigate("/quick-meals")}>
-    <div className="quick-left">
-      <h3>🍳 Quick Meal Suggestions</h3>
-      <p>Ready in 10–15 minutes — fast & tasty picks</p>
-    </div>
-    <div className="quick-right">
-      <button className="view-btn">View</button>
-    </div>
-  </div>
+          {/* Quick Meals + Search (Separated layout) */}
+          <div className="quick-and-search"> {/*wrapper for both sections */}
 
-  {/* --- Search Bar Below --- */}
-  <div className="search-row">
-    <input
-      placeholder="Enter ingredients (e.g., chicken, rice, egg)..."
-      value={query}
-      onChange={handleSearchChange}
-    />
-  </div>
+            {/* --- Quick Meal Suggestion Card --- */}
+            <div className="quick-card" onClick={() => navigate("/quick-meals")}>
+              <div className="quick-left">
+                <h3>🍳 Quick Meal Suggestions</h3>
+                <p>Ready in 10–15 minutes — fast & tasty picks</p>
+              </div>
+              <div className="quick-right">
+                <button className="view-btn">View</button>
+              </div>
+            </div>
 
-</div>
+            {/* --- Search Bar Below --- */}
+            <div className="search-row">
+              <input
+                placeholder="Enter ingredients (e.g., chicken, rice, egg)..."
+                value={query}
+                onChange={handleSearchChange}
+              />
+            </div>
+
+          </div>
 
         </section>
 
@@ -279,17 +278,16 @@ const enrichMeals = (raw = []) => {
       </main>
 
       {/* Favorites Drawer */}
-     {/* Favorites Drawer */}
-{showFavDrawer && (
-  <FavoritesBar
-    favorites={favorites}
-    onClose={() => setShowFavDrawer(false)}
-    onRemove={(id) => onRemoveFavorite(id)}   // <- pass as "onRemove"
-  />
-)}
+      {showFavDrawer && (
+        <FavoritesBar
+          favorites={favorites}
+          onClose={() => setShowFavDrawer(false)}
+          onRemove={(id) => onRemoveFavorite(id)}   
+        />
+      )}
 
 
-    
+
 
     </div>
   );

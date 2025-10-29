@@ -1,4 +1,4 @@
-/* ---------------- Controls & Filters ---------------- */
+
 .controls {
   display: flex;
   flex-direction: column;
@@ -9,14 +9,14 @@
 .top-actions {
   position: relative;
   display: flex;
-  justify-content: flex-end; /* keeps button on right */
-  margin-right: 40px; /* current offset from right edge */
+  justify-content: flex-end; 
+  margin-right: 40px; 
 }
 
-/* move it left */
+
 .favorites-pill {
   position: relative;
-  right: 50px; /* increase this value to move left */
+  right: 50px; 
 }
 
 .filters {
@@ -65,25 +65,25 @@
   box-shadow: 0 6px 18px rgba(255, 107, 107, 0.15);
 }
 
-/* ---------------- Quick Card + Search Row ---------------- */
+/*Quick Card + Search Row */
 .quick-and-search {
   display: flex;
-  flex-direction: column; /* ⬅️ stack Quick Meal card and search bar vertically */
+  flex-direction: column; 
   align-items: center;
   gap: 20px;
   margin: 1.5rem auto;
-  max-width: 700px; /* ✅ medium width for cleaner layout */
+  max-width: 700px;
   width: 100%;
 }
 
-/* --- Quick Meal Suggestion Card --- */
+/*Quick Meal Suggestion Card */
 .quick-and-search {
   display: flex;
-  flex-direction: column; /* stack Quick Meal + search */
+  flex-direction: column; 
   align-items: center;
   gap: 20px;
   margin: 1.5rem auto;
-  max-width: 700px; /* medium layout */
+  max-width: 700px; 
   width: 100%;
 }
 
@@ -155,7 +155,7 @@
 }
 
 
-/* --- Search Input Below --- */
+/* Search Input Below */
 .search-row {
   width: 100%;
   display: flex;
@@ -180,34 +180,9 @@
   box-shadow: 0 0 6px rgba(255, 107, 107, 0.3);
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .quick-and-search {
-    max-width: 90%;
-  }
-
-  .quick-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 16px;
-  }
-
-  .quick-left h3 {
-    font-size: 1.1rem;
-  }
-
-  .quick-left p {
-    font-size: 0.9rem;
-  }
-
-  .quick-right .view-btn {
-    width: 100%;
-  }
-}
 
 
-/* ---------------- Category Row ---------------- */
+/* Category Row */
 .category-row {
   margin-top: 16px;
   margin-bottom: 18px;
@@ -286,7 +261,7 @@
   text-align: center;
 }
 
-/* ---------------- Meals Grid ---------------- */
+/*Meals Grid  */
 .meals-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -295,36 +270,8 @@
   align-items: stretch;
   justify-items: center;
 }
-
-/* ---------------- Responsive ---------------- */
-@media (max-width: 900px) {
-  .search-row input {
-    width: 280px;
-  }
-
-  .quick-card {
-    width: 100%;
-  }
-
-  .category-card {
-    min-width: 100px;
-  }
-}
-
-@media (max-width: 600px) {
-  .search-row input {
-    width: 90%;
-  }
-
-  .category-scroll {
-    gap: 8px;
-  }
-
-  .category-card {
-    min-width: 90px;
-    padding: 8px;
-  }
-
+/* Responsive  */
+@media (max-width: 768px) {
   .quick-and-search {
     max-width: 90%;
   }
@@ -347,8 +294,5 @@
   .quick-right .view-btn {
     width: 100%;
   }
-
-  .controls {
-    gap: 10px;
-  }
 }
+

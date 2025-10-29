@@ -1,38 +1,77 @@
-:root{
+:root {
   --bg: #fff7f3;
   --card: #fff;
   --accent: #ff6b6b;
-  --muted:#7a7a7a;
-  --yellow:#fff2b8;
+  --muted: #7a7a7a;
+  --yellow: #fff2b8;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
   font-family: "Poppins", system-ui, Arial, sans-serif;
-  background:var(--bg);
-  color:#222;
-  -webkit-font-smoothing:antialiased;
+  background: var(--bg);
+  color: #222;
+  -webkit-font-smoothing: antialiased;
 }
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 26px;
-  background:linear-gradient(180deg, rgba(255,250,248,0.95), rgba(255,245,240,0.9));
-  box-shadow:0 4px 14px rgba(0,0,0,0.04);
-  position:sticky;
-  top:0;
-  z-index:50;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 26px;
+  background: linear-gradient(180deg, rgba(255, 250, 248, 0.95), rgba(255, 245, 240, 0.9));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-.brand h1{margin:0;font-size:1.5rem;color:#333}
-.brand .tag{margin-top:4px;color:var(--muted);font-size:0.9rem}
-.favorites-pill{
-  background:#fff;
-  border:1px solid rgba(0,0,0,0.06);
-  padding:10px 14px;border-radius:999px;cursor:pointer;color:var(--accent);font-weight:600;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333
 }
-.favorites-pill:hover{transform:translateY(-2px)}
-.home-container{padding:22px;max-width:1200px;margin:18px auto}
-.footer{text-align:center;color:var(--muted);margin-top:26px;font-size:0.9rem}
-.empty{text-align:center;color:var(--muted);padding:30px 0}
+
+.brand .tag {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.9rem
+}
+
+.favorites-pill {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.favorites-pill:hover {
+  transform: translateY(-2px)
+}
+
+.home-container {
+  padding: 22px;
+  max-width: 1200px;
+  margin: 18px auto
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 26px;
+  font-size: 0.9rem
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px 0
+}

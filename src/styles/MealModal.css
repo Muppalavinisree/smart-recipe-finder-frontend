@@ -1,8 +1,59 @@
-.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:1000}
-.modal-content{background:#fff;max-width:700px;width:94%;padding:18px;border-radius:12px;max-height:92vh;overflow:auto}
-.back-btn{background:#eee;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;margin-bottom:10px}
-.meal-image{width:100%;border-radius:10px;margin:10px 0;object-fit:cover}
-.heart-btn{border:none;background:none;font-size:22px;cursor:pointer;color:#bdbdbd}
-.heart-btn.favorited{color:#ff4b4b}
-.ingredients-list{margin-left:18px}
-.instructions{white-space:pre-wrap;line-height:1.6}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000
+}
+
+.modal-content {
+    background: #fff;
+    max-width: 700px;
+    width: 94%;
+    padding: 18px;
+    border-radius: 12px;
+    max-height: 92vh;
+    overflow: auto
+}
+
+.back-btn {
+    background: #eee;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px
+}
+
+.meal-image {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    object-fit: cover
+}
+
+.heart-btn {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #bdbdbd
+}
+
+.heart-btn.favorited {
+    color: #ff4b4b
+}
+
+.ingredients-list {
+    margin-left: 18px
+}
+
+.instructions {
+    white-space: pre-wrap;
+    line-height: 1.6
+}

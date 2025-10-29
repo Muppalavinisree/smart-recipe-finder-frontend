@@ -49,7 +49,6 @@ function Chatbot() {
 
   return (
     <div className="chatbot-wrapper" ref={chatbotRef}>
-      {/* 🤖 Floating Icon */}
       {!open && (
         <motion.button
           className="chatbot-icon"
@@ -61,7 +60,7 @@ function Chatbot() {
         </motion.button>
       )}
 
-      {/* 💬 Chat Window with animation */}
+      {/*Chat Window with animation */}
       <AnimatePresence>
         {open && (
           <motion.div

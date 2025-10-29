@@ -1,4 +1,4 @@
-/* --- Main Recipe Page Wrapper --- */
+/* Main Recipe Page Wrapper */
 .recipe-page {
   padding: 2rem 1rem;
   max-width: 780px;
@@ -9,7 +9,7 @@
   border: 1px solid rgba(255, 92, 92, 0.05);
 }
 
-/* --- Back Button --- */
+/* Back Button*/
 .back-btn {
   background: none;
   border: none;
@@ -25,7 +25,7 @@
   color: #ff3030;
 }
 
-/* --- Recipe Header --- */
+/* Recipe Header */
 .recipe-header {
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
   transform: scale(1.15);
 }
 
-/* --- Recipe Image --- */
+/* Recipe Image */
 .recipe-image {
   width: 90%;
   max-height: 320px;
@@ -71,7 +71,7 @@
   transform: scale(1.02);
 }
 
-/* --- Section Titles --- */
+/* Section Titles */
 .recipe-section {
   text-align: left;
   margin-top: 1.6rem;
@@ -83,7 +83,7 @@
   margin-bottom: 0.6rem;
 }
 
-/* --- Ingredients --- */
+/* Ingredients */
 .ingredient-list {
   margin-left: 20px;
   padding-left: 10px;
@@ -92,7 +92,7 @@
   color: #444;
 }
 
-/* --- Instructions --- */
+/* Instructions */
 .instructions {
   white-space: pre-wrap;
   line-height: 1.7;
@@ -105,7 +105,7 @@
 }
 
 
-/* --- YouTube Video --- */
+/* YouTube Video */
 .recipe-video {
   margin-top: 1.6rem;
   text-align: center;
@@ -120,7 +120,7 @@
   box-shadow: 0 6px 20px rgba(255, 92, 92, 0.1);
 }
 
-/* --- Loading --- */
+/* Loading */
 .loading-text {
   text-align: center;
   padding: 50px;
@@ -128,7 +128,7 @@
   color: #555;
 }
 
-/* --- Responsive --- */
+/*  Responsive*/
 @media (max-width: 768px) {
   .recipe-page {
     padding: 1.5rem;
