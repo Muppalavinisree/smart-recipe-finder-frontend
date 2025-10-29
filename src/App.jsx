@@ -10,7 +10,7 @@ function App() {
   const [favorites, setFavorites] = useState(
     JSON.parse(localStorage.getItem("favorites") || "[]")
   );
-  const [showFavDrawer, setShowFavDrawer] = useState(false); // ⬅️ add this
+  const [showFavDrawer, setShowFavDrawer] = useState(false); 
   const location = useLocation();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
               onToggleFavorite={handleToggleFavorite}
               onRemoveFavorite={handleRemoveFavorite}
               showFavDrawer={showFavDrawer}
-              setShowFavDrawer={setShowFavDrawer} // ⬅️ pass control to Home
+              setShowFavDrawer={setShowFavDrawer}
             />
           }
         />
@@ -64,7 +64,7 @@ function App() {
         />
       </Routes>
 
-      {/* ✅ Only show chatbot when on home page AND favorites drawer is closed */}
+      
       {location.pathname === "/" && !showFavDrawer && <Chatbot />}
     </>
   );
