@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/mealmodal.css";
+import "../styles/MealModal.css";
 
 const MealModal = ({ mealId, onClose, onToggleFavorite, favorites = [] }) => {
   const [meal, setMeal] = useState(null);

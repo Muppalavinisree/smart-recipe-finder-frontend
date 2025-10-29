@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Favoritesbar.css";
+import "../styles/FavoritesBar.css";
 
 const FavoritesBar = ({ favorites = [], onRemove, onClose }) => {
   const navigate = useNavigate();

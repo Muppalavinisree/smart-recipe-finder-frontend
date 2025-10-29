@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/mealcard.css";
+import "../styles/MealCard.css";
 
 const MealCard = ({ meal, favorites = [], onToggleFavorite }) => {
   const navigate = useNavigate();

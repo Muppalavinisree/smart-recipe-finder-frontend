@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../styles/recipepage.css";
+import "../styles/RecipePage.css";
 
 const RecipePage = ({ favorites, onToggleFavorite }) => {
   const { id } = useParams();
