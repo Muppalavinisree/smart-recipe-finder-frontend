@@ -1,16 +1,50 @@
-# React + Vite
+# 🍳 Smart Recipe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The **Smart Recipe Finder** is a full-stack AI-powered web application designed to assist people like **Taylor** — a busy professional who wants to make quick, delicious meals without the hassle of endless searching.
 
-Currently, two official plugins are available:
+### 👩‍🍳 Main Idea
+**Name:** Taylor  
+**Occupation:** Busy Professional  
+**Need:** After a long day at work, Taylor wants to easily decide *what to cook* based on:
+- Ingredients available at home  
+- Mood or meal preferences  
+- Available cooking time  
+- Dietary restrictions or cravings  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The **Smart Recipe Finder** uses an **AI chatbot** and smart filters to suggest personalized meal ideas. Taylor can chat with the bot, search for recipes, and instantly view ingredients and steps. Favorite recipes can be saved for later, making cooking easier and faster.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Live Links
 
-## Expanding the ESLint configuration
+- **Frontend (Deployed on CodeSandbox):** [Smart Recipe Finder Frontend](https://codesandbox.io/p/github/Muppalavinisree/smart-recipe-finder-frontend)  
+- **Backend (Deployed on Render):** [Smart Recipe Finder Backend](https://smart-recipe-finder-backend-19ot.onrender.com)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 💻 GitHub Repositories
+
+- **Frontend Repository:** [smart-recipe-finder-frontend](https://github.com/Muppalavinisree/smart-recipe-finder-frontend)  
+- **Backend Repository:** [smart-recipe-finder-backend](https://github.com/Muppalavinisree/smart-recipe-finder-backend)
+
+---
+## 🛠️ Tech Stack
+- **Frontend:** React, CSS, JavaScript  
+- **Backend:** Node.js, Express [currently used only for integrating the ChatGPT API (AI chatbot functionality).]
+- **API:** TheMealDB  
+- **AI Assistant:** ChatGPT Integration  
+- **Hosting:** CodeSandbox (Frontend),Render (Backend)
+
+
+## 🧠 Overview
+
+This app empowers users to:
+- Search and discover meal ideas quickly.  
+- Chat with an **AI-powered assistant** to get tailored recipe suggestions.  
+- Save and view favorite recipes.  
+- Explore ingredients and preparation steps easily.  
+
+Built for convenience, personalization, and creativity in the kitchen — **Taylor’s cooking companion**.
+
+---
+✨ Developed by [Vinisree Muppala](https://github.com/Muppalavinisree)
