@@ -294,14 +294,19 @@
   .quick-right .view-btn {
     width: 100%;
   }
-   .header, .navbar {
-    flex-direction: column;
-    align-items: center;
+  .favorites-btn,
+  .favorites-bar,
+  .favorites-drawer {
+    position: static !important;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
-  .favorites-btn {
-    margin-top: 10px;
-    position: static !important;
+  .header, .navbar, .home-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
