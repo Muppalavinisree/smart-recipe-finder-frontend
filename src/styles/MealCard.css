@@ -1,0 +1,14 @@
+.meal-card{
+  background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.06);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;width:100%;max-width:420px;
+  transition:transform .18s,box-shadow .18s;
+}
+.meal-card img{width:100%;height:160px;object-fit:cover;border-bottom:1px solid rgba(0,0,0,0.04)}
+.meal-card-info{display:flex;justify-content:space-between;align-items:center;padding:12px 14px}
+.meal-card-info h4{margin:0;font-size:1.05rem;color:#222;flex:1;text-align:left}
+.card-actions{display:flex;gap:10px;align-items:center}
+.time-chip{background:rgba(0,0,0,0.06);padding:6px 8px;border-radius:999px;font-weight:600;color:#444;font-size:0.9rem}
+.fav-icon{background:none;border:none;font-size:1.25rem;cursor:pointer;color:#bfbfbf;transition:transform .12s,color .12s}
+.fav-icon:hover{transform:scale(1.05)}
+.fav-icon.active{color:var(--accent)}
+.meal-card:hover{transform:translateY(-6px)}
+@media(max-width:480px){.meal-card img{height:140px}}

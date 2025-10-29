@@ -1,0 +1,135 @@
+/* --- Wrapper (centers everything) --- */
+.quick-wrapper {
+  background: #fffdfb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* --- Inner container --- */
+.quick-inner {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* --- Header --- */
+.quick-header {
+  margin-bottom: 2rem;
+}
+
+.quick-header h2 {
+  color: #ff5c5c;
+  margin-bottom: 0.3rem;
+}
+
+.quick-header p {
+  color: #666;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #ff5c5c;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #ff3030;
+}
+
+/* --- Cards Grid --- */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* --- Each Card --- */
+.quick-card {
+  background: #fffaf6;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 107, 107, 0.08);
+  box-shadow: 0 5px 14px rgba(255, 107, 107, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.quick-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(255, 107, 107, 0.18);
+}
+
+/* --- Image --- */
+.image-container {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.quick-card:hover img {
+  transform: scale(1.08);
+}
+
+/* --- Info Section --- */
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 0.6rem 0.3rem 0.8rem;
+}
+
+.info h3 {
+  font-size: 1rem;
+  color: #ff5c5c;
+  margin: 0;
+  text-align: left;
+}
+
+.time {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .quick-inner {
+    max-width: 600px;
+  }
+
+  .quick-grid {
+    gap: 1rem;
+  }
+
+  .image-container {
+    height: 130px;
+  }
+
+  .info h3 {
+    font-size: 0.9rem;
+  }
+
+  .time {
+    font-size: 0.8rem;
+  }
+}

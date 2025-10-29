@@ -1,0 +1,354 @@
+/* ---------------- Controls & Filters ---------------- */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.top-actions {
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* keeps button on right */
+  margin-right: 40px; /* current offset from right edge */
+}
+
+/* move it left */
+.favorites-pill {
+  position: relative;
+  right: 50px; /* increase this value to move left */
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.subfilters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.chip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.chip.small {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.chip:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.1);
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+.chip.active {
+  background: linear-gradient(90deg, #ffd6cf, #fff1f0);
+  color: var(--accent);
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.15);
+}
+
+/* ---------------- Quick Card + Search Row ---------------- */
+.quick-and-search {
+  display: flex;
+  flex-direction: column; /* ⬅️ stack Quick Meal card and search bar vertically */
+  align-items: center;
+  gap: 20px;
+  margin: 1.5rem auto;
+  max-width: 700px; /* ✅ medium width for cleaner layout */
+  width: 100%;
+}
+
+/* --- Quick Meal Suggestion Card --- */
+.quick-and-search {
+  display: flex;
+  flex-direction: column; /* stack Quick Meal + search */
+  align-items: center;
+  gap: 20px;
+  margin: 1.5rem auto;
+  max-width: 700px; /* medium layout */
+  width: 100%;
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  background: linear-gradient(180deg, #fff8ec, #fffdf9);
+  padding: 18px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 100, 100, 0.06);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.quick-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.12);
+}
+
+.quick-left h3 {
+  margin: 0;
+  color: #ff6b6b;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.quick-left p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.view-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  background: white;
+  color: #ff6b6b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  background: #ffeaea;
+  color: #ff4c4c;
+}
+
+.search-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-row input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+
+/* --- Search Input Below --- */
+.search-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-row input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.search-row input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.3);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .quick-and-search {
+    max-width: 90%;
+  }
+
+  .quick-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .quick-left h3 {
+    font-size: 1.1rem;
+  }
+
+  .quick-left p {
+    font-size: 0.9rem;
+  }
+
+  .quick-right .view-btn {
+    width: 100%;
+  }
+}
+
+
+/* ---------------- Category Row ---------------- */
+.category-row {
+  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+}
+
+.category-card {
+  min-width: 110px;
+  background: var(--card, #fff);
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(255, 107, 107, 0.15);
+}
+
+.category-card:active {
+  transform: scale(0.95);
+}
+
+.category-card.clicked {
+  animation: pulse 0.4s ease;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(255,107,107,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+}
+
+.category-card .category-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 6px solid #ff6b6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.category-card:hover .category-circle {
+  border-color: #ff8a8a;
+}
+
+.category-card .category-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.category-label {
+  font-weight: 700;
+  color: #333;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ---------------- Meals Grid ---------------- */
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+  align-items: stretch;
+  justify-items: center;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+  .search-row input {
+    width: 280px;
+  }
+
+  .quick-card {
+    width: 100%;
+  }
+
+  .category-card {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-row input {
+    width: 90%;
+  }
+
+  .category-scroll {
+    gap: 8px;
+  }
+
+  .category-card {
+    min-width: 90px;
+    padding: 8px;
+  }
+
+  .quick-and-search {
+    max-width: 90%;
+  }
+
+  .quick-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .quick-left h3 {
+    font-size: 1.1rem;
+  }
+
+  .quick-left p {
+    font-size: 0.9rem;
+  }
+
+  .quick-right .view-btn {
+    width: 100%;
+  }
+
+  .controls {
+    gap: 10px;
+  }
+}
