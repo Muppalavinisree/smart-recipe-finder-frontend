@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import ReactMarkdown from "react-markdown"; // ✅ Added for formatted responses
+import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/Chatbot.css";
 
@@ -10,13 +10,13 @@ function Chatbot() {
   const [input, setInput] = useState("");
   const chatbotRef = useRef(null);
 
-  //  Dynamic API base URL (works for both local + deployed)
+  // ✅ Dynamic API base (auto-switch for local & deployed)
   const API_BASE =
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
       : "https://smart-recipe-finder-backend-95bk.onrender.com";
 
-  //  Close chatbot when clicking outside
+  // Close chatbot when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (chatbotRef.current && !chatbotRef.current.contains(e.target)) {
@@ -27,57 +27,53 @@ function Chatbot() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  //  Send message to backend
-  //  Send message to backend
-const handleSend = async () => {
-  if (!input.trim()) return;
+  // Send message to backend
+  const handleSend = async () => {
+    if (!input.trim()) return;
 
-  const userMsg = { sender: "user", text: input };
-  setMessages((prev) => [...prev, userMsg]);
-  setInput("");
+    const userMsg = { sender: "user", text: input };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
 
-  const lowerInput = input.toLowerCase().trim();
+    const lowerInput = input.toLowerCase().trim();
 
-  //  Custom greeting replies
-  if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
-    const botMsg = {
-      sender: "bot",
-      text: "👋 Hey hii! What kind of dish would you like to prepare today?",
-    };
-    setMessages((prev) => [...prev, botMsg]);
-    return;
-  }
+    // Greeting replies
+    if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "👋 Hey hii! What kind of dish would you like to prepare today?",
+        },
+      ]);
+      return;
+    }
 
-  try {
-    // ✅ Corrected: use `input` instead of `message`
-    const res = await axios.post(
-      "https://smart-recipe-finder-backend-95bk.onrender.com/chat",
-      { message: input },
-      { headers: { "Content-Type": "application/json" } }
-    );
+    try {
+      // ✅ Use API_BASE here instead of hardcoding
+      const res = await axios.post(
+        `${API_BASE}/chat`,
+        { message: input },
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-    const data = res.data;
-    const botMsg = {
-      sender: "bot",
-      text: data.reply || "Sorry, I don’t know that.",
-    };
-    setMessages((prev) => [...prev, botMsg]);
-  } catch (error) {
-    console.error("Chat error:", error);
-    setMessages((prev) => [
-      ...prev,
-      {
-        sender: "bot",
-        text: "⚠️ Server error. Please try again later.",
-      },
-    ]);
-  }
-};
-
+      const data = res.data;
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: data.reply || "Sorry, I don’t know that." },
+      ]);
+    } catch (error) {
+      console.error("Chat error:", error);
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "⚠️ Server error. Please try again later." },
+      ]);
+    }
+  };
 
   return (
     <div className="chatbot-wrapper" ref={chatbotRef}>
-      {/*  Floating button */}
+      {/* Floating button */}
       {!open && (
         <motion.button
           className="chatbot-icon"
@@ -89,7 +85,7 @@ const handleSend = async () => {
         </motion.button>
       )}
 
-      {/* Chat Window */}
+      {/* Chat window */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -99,7 +95,6 @@ const handleSend = async () => {
             exit={{ opacity: 0, y: -30, scale: 0.9 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            {/* Header */}
             <div className="chatbot-header">
               <span>AI Meal Assistant 🍽️</span>
               <button className="close-btn" onClick={() => setOpen(false)}>
@@ -107,17 +102,14 @@ const handleSend = async () => {
               </button>
             </div>
 
-            {/* Messages */}
             <div className="chatbot-messages">
               {messages.map((msg, i) => (
                 <div key={i} className={`chat-message ${msg.sender}`}>
-                  {/* ✅ Render formatted Markdown */}
                   <ReactMarkdown>{msg.text}</ReactMarkdown>
                 </div>
               ))}
             </div>
 
-            {/* Input field */}
             <div className="chatbot-input">
               <input
                 type="text"
