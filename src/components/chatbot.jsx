@@ -53,7 +53,7 @@ function Chatbot() {
       // ✅ Use API_BASE here instead of hardcoding
       const res = await axios.post(
         `${API_BASE}/api/chat`,
-        { message: input },
+        { prompt: input },
         { headers: { "Content-Type": "application/json" } }
       );
 
