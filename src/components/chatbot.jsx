@@ -11,10 +11,11 @@ function Chatbot() {
   const chatbotRef = useRef(null);
 
   // ✅ Dynamic API base (auto-switch for local & deployed)
-  const API_BASE =
-    import.meta.env.MODE === "development"
-      ? "http://localhost:5000"
-      : "https://smart-recipe-finder-backend-95bk.onrender.com";
+ const API_BASE =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : "https://chatbot-backend-p0rs4jcss-vinisreemuppala248-3388s-projects.vercel.app";
+
 
   // Close chatbot when clicking outside
   useEffect(() => {
