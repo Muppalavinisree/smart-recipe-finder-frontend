@@ -28,50 +28,52 @@ function Chatbot() {
   }, []);
 
   //  Send message to backend
-  const handleSend = async () => {
-    if (!input.trim()) return;
+  //  Send message to backend
+const handleSend = async () => {
+  if (!input.trim()) return;
 
-    const userMsg = { sender: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-    setInput("");
+  const userMsg = { sender: "user", text: input };
+  setMessages((prev) => [...prev, userMsg]);
+  setInput("");
 
-    const lowerInput = input.toLowerCase().trim();
+  const lowerInput = input.toLowerCase().trim();
 
-    //  Custom greeting replies
-    if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
-      const botMsg = {
+  //  Custom greeting replies
+  if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
+    const botMsg = {
+      sender: "bot",
+      text: "👋 Hey hii! What kind of dish would you like to prepare today?",
+    };
+    setMessages((prev) => [...prev, botMsg]);
+    return;
+  }
+
+  try {
+    // ✅ Corrected: use `input` instead of `message`
+    const res = await axios.post(
+      "https://smart-recipe-finder-backend-95bk.onrender.com/chat",
+      { message: input },
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    const data = res.data;
+    const botMsg = {
+      sender: "bot",
+      text: data.reply || "Sorry, I don’t know that.",
+    };
+    setMessages((prev) => [...prev, botMsg]);
+  } catch (error) {
+    console.error("Chat error:", error);
+    setMessages((prev) => [
+      ...prev,
+      {
         sender: "bot",
-        text: "👋 Hey hii! What kind of dish would you like to prepare today?",
-      };
-      setMessages((prev) => [...prev, botMsg]);
-      return;
-    }
+        text: "⚠️ Server error. Please try again later.",
+      },
+    ]);
+  }
+};
 
-    try {
-      //  Send prompt to Gemini + MealDB backend
-      const res = await axios.post(
-        `${API_BASE}/api/chat`,
-        { prompt: input },
-        { headers: { "Content-Type": "application/json" } }
-      );
-
-      const data = res.data;
-      const botMsg = {
-        sender: "bot",
-        text: data.reply || "Sorry, I don’t know that.",
-      };
-      setMessages((prev) => [...prev, botMsg]);
-    } catch (error) {
-      console.error("Chat error:", error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "⚠️ Server error. Please try again later.",
-        },
-      ]);
-    }
-  };
 
   return (
     <div className="chatbot-wrapper" ref={chatbotRef}>
