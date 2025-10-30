@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/Chatbot.css";
@@ -10,11 +9,11 @@ function Chatbot() {
   const [input, setInput] = useState("");
   const chatbotRef = useRef(null);
 
-  // ✅ Dynamic API base (auto-switch for local & deployed)
- const API_BASE =
+  // Dynamic API base (auto-switch for local & Render)
+  const API_BASE =
   import.meta.env.MODE === "development"
     ? "http://localhost:5000"
-    : "https://chatbot-backend-p0rs4jcss-vinisreemuppala248-3388s-projects.vercel.app";
+    : "https://smart-recipe-finder-backend-lyyd.onrender.com";
 
 
   // Close chatbot when clicking outside
@@ -38,7 +37,7 @@ function Chatbot() {
 
     const lowerInput = input.toLowerCase().trim();
 
-    // Greeting replies
+    // 👋 Greeting replies (client-side quick response)
     if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
       setMessages((prev) => [
         ...prev,
@@ -51,14 +50,16 @@ function Chatbot() {
     }
 
     try {
-      // ✅ Use API_BASE here instead of hardcoding
-      const res = await axios.post(
-        `${API_BASE}/api/chat`,
-        { prompt: input },
-        { headers: { "Content-Type": "application/json" } }
-      );
+      // ✅ Fetch instead of Axios
+      const res = await fetch(`${API_BASE}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: input }),
+      });
 
-      const data = res.data;
+      if (!res.ok) throw new Error("Server error");
+
+      const data = await res.json();
       setMessages((prev) => [
         ...prev,
         { sender: "bot", text: data.reply || "Sorry, I don’t know that." },
