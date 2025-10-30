@@ -14,7 +14,7 @@ function Chatbot() {
   const API_BASE =
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
-      : "https://smart-recipe-finder-backend-ok6c.onrender.com";
+      : "https://smart-recipe-finder-backend-95bk.onrender.com";
 
   //  Close chatbot when clicking outside
   useEffect(() => {
@@ -75,7 +75,7 @@ function Chatbot() {
 
   return (
     <div className="chatbot-wrapper" ref={chatbotRef}>
-      {/* 🤖 Floating button */}
+      {/*  Floating button */}
       {!open && (
         <motion.button
           className="chatbot-icon"
@@ -87,7 +87,7 @@ function Chatbot() {
         </motion.button>
       )}
 
-      {/* 💬 Chat Window */}
+      {/* Chat Window */}
       <AnimatePresence>
         {open && (
           <motion.div
