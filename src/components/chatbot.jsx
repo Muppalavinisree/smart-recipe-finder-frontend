@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 import "../styles/Chatbot.css";
 
 function Chatbot() {
@@ -9,14 +10,22 @@ function Chatbot() {
   const [input, setInput] = useState("");
   const chatbotRef = useRef(null);
 
-  // Dynamic API base (auto-switch for local & Render)
+  // 🌐 Auto-detect backend URL
   const API_BASE =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5000"
-    : "https://smart-recipe-finder-backend-lyyd.onrender.com";
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : "https://smart-recipe-finder-backend-lyyd.onrender.com";
 
+  // 🍲 Simple local fallback recipes (client-side)
+  const localRecipes = {
+    chicken: "🍗 Try **Chicken Biryani** or **Butter Chicken** — both rich and flavorful!",
+    paneer: "🧀 You could make **Paneer Butter Masala** or **Paneer Tikka**.",
+    rice: "🍚 How about **Egg Fried Rice** or **Veg Pulao**?",
+    snack: "🥪 Maybe try a **Veg Sandwich** or **French Fries**!",
+    egg: "🥚 You could prepare **Egg Curry** or **Egg Fried Rice**.",
+  };
 
-  // Close chatbot when clicking outside
+  // 🧠 Close chatbot on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (chatbotRef.current && !chatbotRef.current.contains(e.target)) {
@@ -27,7 +36,7 @@ function Chatbot() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Send message to backend
+  // 🚀 Send message to backend
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -37,7 +46,7 @@ function Chatbot() {
 
     const lowerInput = input.toLowerCase().trim();
 
-    // 👋 Greeting replies (client-side quick response)
+    // 🧡 Simple greeting responses
     if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
       setMessages((prev) => [
         ...prev,
@@ -49,33 +58,40 @@ function Chatbot() {
       return;
     }
 
-    try {
-      // ✅ Fetch instead of Axios
-      const res = await fetch(`${API_BASE}/api/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: input }),
-      });
-
-      if (!res.ok) throw new Error("Server error");
-
-      const data = await res.json();
+    // 🔹 Local client-side fallback (before backend call)
+    const foundKey = Object.keys(localRecipes).find((k) =>
+      lowerInput.includes(k)
+    );
+    if (foundKey) {
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: data.reply || "Sorry, I don’t know that." },
+        { sender: "bot", text: localRecipes[foundKey] },
+      ]);
+    }
+
+    try {
+      const res = await axios.post(`${API_BASE}/api/chat`, { prompt: input });
+
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: res.data.reply || "Sorry, I don’t know that." },
       ]);
     } catch (error) {
       console.error("Chat error:", error);
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: "⚠️ Server error. Please try again later." },
-      ]);
+
+      // If backend fails, but we already gave local response → skip duplicate message
+      if (!foundKey) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Server error. Please try again later." },
+        ]);
+      }
     }
   };
 
   return (
     <div className="chatbot-wrapper" ref={chatbotRef}>
-      {/* Floating button */}
+      {/* 🤖 Floating icon */}
       {!open && (
         <motion.button
           className="chatbot-icon"
@@ -87,7 +103,7 @@ function Chatbot() {
         </motion.button>
       )}
 
-      {/* Chat window */}
+      {/* 💬 Chat Window */}
       <AnimatePresence>
         {open && (
           <motion.div
