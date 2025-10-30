@@ -14,7 +14,7 @@ function Chatbot() {
   const API_BASE =
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
-      : "https://smart-recipe-finder-backend-19ot.onrender.com";
+      : "https://smart-recipe-finder-backend-ok6c.onrender.com";
 
   // ⛔ Close chatbot when clicking outside
   useEffect(() => {
