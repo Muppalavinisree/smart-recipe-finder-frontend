@@ -10,13 +10,13 @@ function Chatbot() {
   const [input, setInput] = useState("");
   const chatbotRef = useRef(null);
 
-  // 🌐 Auto-detect backend URL
+  //  Auto-detect backend URL
   const API_BASE =
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
       : "https://smart-recipe-finder-backend-lyyd.onrender.com";
 
-  // 🍲 Simple local fallback recipes (client-side)
+  // Simple local fallback recipes (client-side)
   const localRecipes = {
     chicken: "🍗 Try **Chicken Biryani** or **Butter Chicken** — both rich and flavorful!",
     paneer: "🧀 You could make **Paneer Butter Masala** or **Paneer Tikka**.",
@@ -25,7 +25,7 @@ function Chatbot() {
     egg: "🥚 You could prepare **Egg Curry** or **Egg Fried Rice**.",
   };
 
-  // 🧠 Close chatbot on outside click
+  //  Close chatbot on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (chatbotRef.current && !chatbotRef.current.contains(e.target)) {
@@ -36,7 +36,7 @@ function Chatbot() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // 🚀 Send message to backend
+  //  Send message to backend
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -46,7 +46,7 @@ function Chatbot() {
 
     const lowerInput = input.toLowerCase().trim();
 
-    // 🧡 Simple greeting responses
+    //  Simple greeting responses
     if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
       setMessages((prev) => [
         ...prev,
@@ -58,7 +58,7 @@ function Chatbot() {
       return;
     }
 
-    // 🔹 Local client-side fallback (before backend call)
+    //  Local client-side fallback (before backend call)
     const foundKey = Object.keys(localRecipes).find((k) =>
       lowerInput.includes(k)
     );
@@ -103,7 +103,7 @@ function Chatbot() {
         </motion.button>
       )}
 
-      {/* 💬 Chat Window */}
+      {/*  Chat Window */}
       <AnimatePresence>
         {open && (
           <motion.div
