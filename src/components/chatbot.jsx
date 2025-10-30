@@ -10,13 +10,13 @@ function Chatbot() {
   const [input, setInput] = useState("");
   const chatbotRef = useRef(null);
 
-  // 🌐 Dynamic API base URL (works for both local + deployed)
+  //  Dynamic API base URL (works for both local + deployed)
   const API_BASE =
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
       : "https://smart-recipe-finder-backend-ok6c.onrender.com";
 
-  // ⛔ Close chatbot when clicking outside
+  //  Close chatbot when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (chatbotRef.current && !chatbotRef.current.contains(e.target)) {
@@ -27,7 +27,7 @@ function Chatbot() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ✉️ Send message to backend
+  //  Send message to backend
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -37,7 +37,7 @@ function Chatbot() {
 
     const lowerInput = input.toLowerCase().trim();
 
-    // 🤖 Custom greeting replies
+    //  Custom greeting replies
     if (["hi", "hii", "hello", "hey"].includes(lowerInput)) {
       const botMsg = {
         sender: "bot",
@@ -48,7 +48,7 @@ function Chatbot() {
     }
 
     try {
-      // 🧠 Send prompt to Gemini + MealDB backend
+      //  Send prompt to Gemini + MealDB backend
       const res = await axios.post(
         `${API_BASE}/api/chat`,
         { prompt: input },
