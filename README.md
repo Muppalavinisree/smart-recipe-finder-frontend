@@ -19,6 +19,11 @@ The **Smart Recipe Finder** uses an **AI chatbot** and smart filters to suggest 
 
 - **Frontend (Deployed on CodeSandbox):** [Smart Recipe Finder Frontend](https://codesandbox.io/p/github/Muppalavinisree/smart-recipe-finder-frontend)  
 - **Backend (Deployed on Render):** [Smart Recipe Finder Backend](https://smart-recipe-finder-backend-19ot.onrender.com)
+- ---
+
+## 🎥 Video Demo
+Watch the walkthrough of the Smart Recipe Finder here: https://drive.google.com/file/d/1IMnNVmmRtGdDXPJFIlgbj_F_gEiC1HeG/view?usp=drive_link 
+
 
 ---
 
